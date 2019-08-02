@@ -13,7 +13,12 @@ import {
   MdcButtonModule,
   MdcListModule,
   MdcSnackbarModule,
-  MdcDialogModule
+  MdcDialogModule,
+  MdcFormFieldModule,
+  MdcCardModule,
+  MdcTextFieldModule,
+  MdcTypographyModule,
+  MdcIconButtonModule,
 } from '@angular-mdc/web';
 import { RegistriesComponent } from './components/registries/registries.component';
 
@@ -32,6 +37,11 @@ import { RegistriesComponent } from './components/registries/registries.componen
     MdcListModule,
     MdcSnackbarModule,
     MdcDialogModule,
+    MdcCardModule,
+    MdcFormFieldModule,
+    MdcTextFieldModule,
+    MdcTypographyModule,
+    MdcIconButtonModule,
     FormsModule,
     HttpClientModule
   ],
