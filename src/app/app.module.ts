@@ -19,13 +19,16 @@ import {
   MdcTextFieldModule,
   MdcTypographyModule,
   MdcIconButtonModule,
+  MdcSelectModule
 } from '@angular-mdc/web';
 import { RegistriesComponent } from './components/registries/registries.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistriesComponent
+    RegistriesComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { RegistriesComponent } from './components/registries/registries.componen
     MdcTextFieldModule,
     MdcTypographyModule,
     MdcIconButtonModule,
+    MdcSelectModule,
     FormsModule,
     HttpClientModule
   ],
