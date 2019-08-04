@@ -73,19 +73,27 @@ export class RegistriesComponent implements OnInit {
         this.entryService.getEntries()
         .subscribe( res => {
           let rawEntries = res as Entry[];
-          let entries =rawEntries.map( entry => {
-              let inputAccountLabel = this.accountService.accounts.find( account => {
+          let entries = rawEntries.map( entry => {
+              let inputAccount = this.accountService.accounts.find( account => {
                 return account._id == entry.inputAccount;
               });
-              if(inputAccountLabel) {
-                entry.inputAccountLabel = inputAccountLabel.title;
+              if(inputAccount) {
+                entry.inputAccountLabel = inputAccount.title;
+                if(inputAccount.balance == null) {
+                  inputAccount.balance = 0;
+                }
+                inputAccount.balance += entry.input;
               }
-  
-              let outputAccountLabel = this.accountService.accounts.find( account => {
+
+              let outputAccount = this.accountService.accounts.find( account => {
                 return account._id == entry.outputAccount;
               });
-              if(outputAccountLabel) {
-                entry.outputAccountLabel = outputAccountLabel.title;
+              if(outputAccount) {
+                entry.outputAccountLabel = outputAccount.title;
+                if(outputAccount.balance == null ) {
+                  outputAccount.balance = 0;
+                }
+                outputAccount.balance -= entry.output;
               }
   
               return entry;
