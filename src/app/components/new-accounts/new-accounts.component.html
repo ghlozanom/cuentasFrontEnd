@@ -1,0 +1,9 @@
+
+<mdc-card class="contentCard">
+    <div mdcHeadline4 class="mdc-theme--on-surface">Accounts: {{accountService.getAllAccountsBalance() | currency:'EUR'}}</div>
+
+    <mdc-list>
+        <mdc-list-item *ngFor="let account of accountService.accounts">
+          <div style="width: 100%"><div style="float: left">{{account.title}}</div> <div style="float: right">{{ account.balance  | currency:'EUR' }}</div></div></mdc-list-item>
+    </mdc-list>
+</mdc-card>
