@@ -24,13 +24,15 @@ import {
 import { RegistriesComponent } from './components/registries/registries.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { NewAccountsComponent } from './components/new-accounts/new-accounts.component';
+import { NewInputComponent } from './components/new-input/new-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistriesComponent,
     AccountsComponent,
-    NewAccountsComponent
+    NewAccountsComponent,
+    NewInputComponent
   ],
   imports: [
     BrowserModule,

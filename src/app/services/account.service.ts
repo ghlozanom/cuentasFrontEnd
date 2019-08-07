@@ -13,6 +13,7 @@ export class AccountService {
 
   constructor(private http: HttpClient) { 
     this.selectedAccount = new Account();
+    this.accounts = [];
   }
 
   getAccounts() {

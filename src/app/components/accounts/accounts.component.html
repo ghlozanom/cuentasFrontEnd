@@ -27,6 +27,11 @@
                         </div>
                   </div>
 
+
+<mdc-list>
+        <mdc-list-item *ngFor="let account of accountService.accounts">{{account.title}} - {{ account.balance  | currency:'EUR' }}</mdc-list-item>
+    </mdc-list>
+    
           <div class="mdc-layout-grid__cell--span-6">
                 <div>
                         <form #accountForm="ngForm" >
