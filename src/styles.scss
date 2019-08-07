@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 
-$mdc-theme-primary: #1565c0; // primary color
+$mdc-theme-primary: #1EB980; // primary color
 $mdc-theme-secondary: #388e3c; // secondary color
 $mdc-theme-background: #232F34;
 $mdc-theme-surface: #344955;
 $mdc-theme--on-surface: blue;
+
 
 @import "~@angular-mdc/theme/material";
 

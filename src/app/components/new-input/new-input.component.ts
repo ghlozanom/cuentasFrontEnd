@@ -25,7 +25,7 @@ export class NewInputComponent implements OnInit {
     .subscribe(res => {
       this.resetForm(form);
       this.snackbar.open(`Entry saved successfuly`);
-      this.getEntries();
+      this.accountService.updateAccounts();
     });
   }
 
@@ -35,46 +35,5 @@ export class NewInputComponent implements OnInit {
       this.entryService.selectedEntry = new Entry();
     }
   }
-
-  getEntries() {
-    this.accountService.getAccounts()
-      .subscribe( res => {
-        this.accountService.accounts = res as Account[];
-
-        this.entryService.getEntries()
-        .subscribe( res => {
-          let rawEntries = res as Entry[];
-          let entries = rawEntries.map( entry => {
-              let inputAccount = this.accountService.accounts.find( account => {
-                return account._id == entry.inputAccount;
-              });
-              if(inputAccount) {
-                entry.inputAccountLabel = inputAccount.title;
-                if(inputAccount.balance == null) {
-                  inputAccount.balance = 0;
-                }
-                inputAccount.balance += entry.value;
-              }
-
-              let outputAccount = this.accountService.accounts.find( account => {
-                return account._id == entry.outputAccount;
-              });
-              if(outputAccount) {
-                entry.outputAccountLabel = outputAccount.title;
-                if(outputAccount.balance == null ) {
-                  outputAccount.balance = 0;
-                }
-                outputAccount.balance -= entry.value;
-              }
-  
-              return entry;
-          });
-          this.entryService.entries = entries;
-          console.log(res);
-        });
-
-      });
-  }
-
 
 }

@@ -1,9 +1,30 @@
 
-<div mdcHeadline4 class="mdc-theme--on-surface">Accounts: {{accountService.getAllAccountsBalance() | currency:'EUR'}}</div>
+<div mdcHeadline4 class="mdc-theme--on-surface">Accounts: {{accountService.allAccountsBalance | currency:'EUR'}}</div>
 
 <mdc-card class="contentCard">
+
+        <form #accountForm="ngForm" >
+                <mdc-card class="contentCard">
+            
+                <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="accountService.selectedAccount._id" >
+                <div>
+                        <mdc-form-field fluid >
+                                <mdc-text-field label="Titulo" type="string"  name="title" #input="ngModel" 
+                                [(ngModel)]="accountService.selectedAccount.title" ></mdc-text-field>                          
+                        </mdc-form-field>
+                </div>
+            
+                <mdc-card-actions>
+                        <mdc-card-action-icons>
+                          <button mdcIconButton mdcCardAction="icon" icon="save" (click)="addAccount(accountForm)" ></button>
+                        </mdc-card-action-icons>
+                      </mdc-card-actions>
+                </mdc-card>
+            
+            </form>
+
     <mdc-list>
-        <mdc-list-item *ngFor="let account of accountService.accounts">
+    <mdc-list-item *ngFor="let account of accountService.accounts">
           <div style="width: 100%"><div style="float: left">{{account.title}}</div> <div style="float: right">{{ account.balance  | currency:'EUR' }}</div></div></mdc-list-item>
     </mdc-list>
 </mdc-card>

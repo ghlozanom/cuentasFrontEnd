@@ -66,6 +66,7 @@ export class RegistriesComponent implements OnInit {
   }
 
   getEntries() {
+    console.log('registries.getentries');
     this.accountService.getAccounts()
       .subscribe( res => {
         this.accountService.accounts = res as Account[];
@@ -99,6 +100,7 @@ export class RegistriesComponent implements OnInit {
               return entry;
           });
           this.entryService.entries = entries;
+          this.accountService.allAccountsBalance = this.accountService.getAllAccountsBalance();
           console.log(res);
         });
 

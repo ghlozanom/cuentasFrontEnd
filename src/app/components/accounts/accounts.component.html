@@ -1,59 +1,30 @@
 <div mdcHeadline4 class="mdc-theme--on-surface">Accounts : {{accountService.getAllAccountsBalance() | currency:'EUR'}}</div>
 
-        <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell--span-12">
-                        <div class="mdc-data-table" >
-                                <table class="mdc-data-table__table" aria-label="Dessert calories">
-                                <thead>
-                                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
-                                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Saldo</th>
-                                    <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operaciones</th>
-                                </thead>
-                                <tbody class="mdc-data-table__content">
-                                    <tr *ngFor="let account of accountService.accounts" class="mdc-data-table__header-row" >
-                                        <td class="mdc-data-table__cell">{{ account.title }}</td>
-                                        <td class="mdc-data-table__cell--numeric">{{ account.balance  | currency:'EUR' }}</td>
-                                        <td class="mdc-data-table__cell">
-                                            <a (click)="editAccount(account)" >
-                                                <mdc-icon>edit</mdc-icon>
-                                            </a>
-                                            <a (click)="deleteAccount(account._id)" >
-                                                    <mdc-icon>delete</mdc-icon>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                  </div>
-
-
-<mdc-list>
-        <mdc-list-item *ngFor="let account of accountService.accounts">{{account.title}} - {{ account.balance  | currency:'EUR' }}</mdc-list-item>
-    </mdc-list>
-    
-          <div class="mdc-layout-grid__cell--span-6">
-                <div>
-                        <form #accountForm="ngForm" >
-                            <mdc-card>
-   
-                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="accountService.selectedAccount._id" >
-                            <div>
-                                    <mdc-form-field fluid >
-                                            <mdc-text-field label="Titulo" type="string"  name="title" #input="ngModel" 
-                                            [(ngModel)]="accountService.selectedAccount.title" ></mdc-text-field>                          
-                                    </mdc-form-field>
-                            </div>
-
-                            <mdc-card-actions>
-                                    <mdc-card-action-icons>
-                                      <button mdcIconButton mdcCardAction="icon" icon="delete" (click)="resetForm(accountForm)" ></button>
-                                      <button mdcIconButton mdcCardAction="icon" icon="save" (click)="addAccount(accountForm)" ></button>
-                                    </mdc-card-action-icons>
-                                  </mdc-card-actions>
-                            </mdc-card>
-
-                        </form>
+<div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell--span-12">
+                <div class="mdc-data-table" >
+                        <table class="mdc-data-table__table" aria-label="Dessert calories">
+                        <thead>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Nombre</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Saldo</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operaciones</th>
+                        </thead>
+                        <tbody class="mdc-data-table__content">
+                            <tr *ngFor="let account of accountService.accounts" class="mdc-data-table__header-row" >
+                                <td class="mdc-data-table__cell">{{ account.title }}</td>
+                                <td class="mdc-data-table__cell--numeric">{{ account.balance  | currency:'EUR' }}</td>
+                                <td class="mdc-data-table__cell">
+                                    <a (click)="editAccount(account)" >
+                                        <mdc-icon>edit</mdc-icon>
+                                    </a>
+                                    <a (click)="deleteAccount(account._id)" >
+                                            <mdc-icon>delete</mdc-icon>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-          </div>
-        </div>
+            </div>
+
+</div>
