@@ -31,4 +31,12 @@ export class AccountService {
     return this.http.delete(this.URL_API + `/${_id}`);
   }
 
+  getAllAccountsBalance() {
+    return this.accounts.map( account => {
+      return account.balance
+    }).reduce( (total, accountBalance) => {
+      return total + accountBalance;
+    }, 0);
+  }
+
 }
