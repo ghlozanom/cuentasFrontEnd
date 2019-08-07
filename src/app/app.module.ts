@@ -23,12 +23,14 @@ import {
 } from '@angular-mdc/web';
 import { RegistriesComponent } from './components/registries/registries.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
+import { NewAccountsComponent } from './components/new-accounts/new-accounts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistriesComponent,
-    AccountsComponent
+    AccountsComponent,
+    NewAccountsComponent
   ],
   imports: [
     BrowserModule,

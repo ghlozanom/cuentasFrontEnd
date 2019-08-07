@@ -1,12 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center" class="mdc-theme--on-surface">
   <h1>
-    Bienvenida mi espocita hermosa a {{ title }}!
+    {{ title }}!
   </h1>
 </div>
 
 <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner" style="max-width: 1500px; margin: auto">
+        <div class="mdc-layout-grid__cell--span-12">
+          <app-new-accounts></app-new-accounts>
+        </div>
       <div class="mdc-layout-grid__cell--span-8"><app-registries></app-registries></div>
       <div class="mdc-layout-grid__cell--span-4"><app-accounts></app-accounts></div>
     </div>
