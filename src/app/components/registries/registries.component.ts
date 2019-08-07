@@ -82,7 +82,7 @@ export class RegistriesComponent implements OnInit {
                 if(inputAccount.balance == null) {
                   inputAccount.balance = 0;
                 }
-                inputAccount.balance += entry.input;
+                inputAccount.balance += entry.value;
               }
 
               let outputAccount = this.accountService.accounts.find( account => {
@@ -93,7 +93,7 @@ export class RegistriesComponent implements OnInit {
                 if(outputAccount.balance == null ) {
                   outputAccount.balance = 0;
                 }
-                outputAccount.balance -= entry.output;
+                outputAccount.balance -= entry.value;
               }
   
               return entry;

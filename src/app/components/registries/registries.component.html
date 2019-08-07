@@ -1,114 +1,106 @@
+
+<div>
 <div mdcHeadline3>Registries</div>
 
-<div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell">
-                <div>
-                        <form #entryForm="ngForm" >
-                            <mdc-card>
-   
-                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="entryService.selectedEntry._id" >
-                            <div>
-                                    <mdc-form-field fluid >
-                                            <mdc-text-field label="Ingreso" type="number"  name="input" #input="ngModel" 
-                                            [(ngModel)]="entryService.selectedEntry.input" ></mdc-text-field>                          
-                                    </mdc-form-field>
-                                    <mdc-form-field fluid >
-                                    <mdc-select placeholder="Cuenta Ingreso" class="custom-select-outline-shape-radius" 
-                                    [(ngModel)]="entryService.selectedEntry.inputAccount" name="inputAccount" >
-                                            <mdc-menu>
-                                              <mdc-list>
-                                                <mdc-list-item *ngFor="let account of accountService.accounts" [value]="account._id" >
-                                                  {{account.title}}
-                                                </mdc-list-item>
-                                              </mdc-list>
-                                            </mdc-menu>
-                                    </mdc-select>
-                                </mdc-form-field>
-                            </div>
-                            <div>
-                                <mdc-form-field fluid >
-                                        <mdc-text-field label="Salida" type="number"  name="output" #input="ngModel" 
-                                        [(ngModel)]="entryService.selectedEntry.output" ></mdc-text-field>                       
-                                </mdc-form-field>
-                                <mdc-form-field fluid >
-                                        <mdc-select placeholder="Cuenta Salida" class="custom-select-outline-shape-radius" 
-                                        [(ngModel)]="entryService.selectedEntry.outputAccount" name="outputAccount" >
-                                                <mdc-menu>
-                                                  <mdc-list>
-                                                    <mdc-list-item *ngFor="let account of accountService.accounts" [value]="account._id" >
-                                                      {{account.title}}
-                                                    </mdc-list-item>
-                                                  </mdc-list>
-                                                </mdc-menu>
-                                        </mdc-select>
-                                </mdc-form-field>                                
-                            </div>
-                    
-                            <div>
-                                <mdc-form-field fluid >
-                                        <mdc-text-field label="Fecha" required type="date" name="date" #input="ngModel" 
-                                        [(ngModel)]="entryService.selectedEntry.date" ></mdc-text-field>                       
-                                </mdc-form-field>    
-                            </div>
-                    
-                            <div>
-                                <mdc-form-field fluid >
-                                        <mdc-text-field label="Titulo" required type="string" name="title" #input="ngModel" 
-                                        [(ngModel)]="entryService.selectedEntry.title" ></mdc-text-field>                       
-                                </mdc-form-field>    
-                            </div>
-                    
-                            <div>
-                                <mdc-form-field fluid >
-                                        <mdc-text-field label="Description" required type="string" name="description" #input="ngModel" 
-                                        [(ngModel)]="entryService.selectedEntry.description" ></mdc-text-field>                       
-                                </mdc-form-field>  
-                            </div>
 
-                            <mdc-card-actions>
-                                    <mdc-card-action-icons>
-                                      <button mdcIconButton mdcCardAction="icon" icon="delete" (click)="resetForm(entryForm)" ></button>
-                                      <button mdcIconButton mdcCardAction="icon" icon="save" (click)="addEntry(entryForm)" ></button>
-                                    </mdc-card-action-icons>
-                                  </mdc-card-actions>
-                            </mdc-card>
+                        <div class="mdc-layout-grid__cell--span-12">
+                                        <form #entryForm="ngForm" >
+                                        <mdc-card>
+                                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="entryService.selectedEntry._id" >
+                                        <div class="mdc-layout-grid__inner">
+                                        <div class="mdc-layout-grid__cell--span-3">
+                                                <mdc-form-field fluid >
+                                                                <mdc-text-field label="Fecha" required type="date" name="date" #input="ngModel" 
+                                                                [(ngModel)]="entryService.selectedEntry.date" ></mdc-text-field>                       
+                                                </mdc-form-field>  
+                                        </div>
+                                        <div class="mdc-layout-grid__cell--span-3">
+                                                        <mdc-form-field fluid >
+                                                                <mdc-text-field label="Valor" type="number"  name="value" #input="ngModel" 
+                                                                [(ngModel)]="entryService.selectedEntry.input" ></mdc-text-field>                          
+                                                </mdc-form-field>  
+                                        </div>
+                                        <div class="mdc-layout-grid__cell--span-3">
+                                                        <mdc-form-field fluid >
+                                                        <mdc-select placeholder="Cuenta Ingreso" class="custom-select-outline-shape-radius" 
+                                                        [(ngModel)]="entryService.selectedEntry.inputAccount" name="inputAccount" >
+                                                                <mdc-menu>
+                                                                <mdc-list>
+                                                                        <mdc-list-item *ngFor="let account of accountService.accounts" [value]="account._id" >
+                                                                        {{account.title}}
+                                                                        </mdc-list-item>
+                                                                </mdc-list>
+                                                                </mdc-menu>
+                                                        </mdc-select>
+                                                </mdc-form-field>                             
+                                        </div>
+                                
+                                        <div class="mdc-layout-grid__cell--span-3">
+                                                        <mdc-form-field fluid >
+                                                                <mdc-select placeholder="Cuenta Salida" class="custom-select-outline-shape-radius" 
+                                                                [(ngModel)]="entryService.selectedEntry.outputAccount" name="outputAccount" >
+                                                                        <mdc-menu>
+                                                                                <mdc-list>
+                                                                                <mdc-list-item *ngFor="let account of accountService.accounts" [value]="account._id" >
+                                                                                {{account.title}}
+                                                                                </mdc-list-item>
+                                                                                </mdc-list>
+                                                                        </mdc-menu>
+                                                                </mdc-select>
+                                                </mdc-form-field>   
+                                        </div>
+                                
+                                        <div class="mdc-layout-grid__cell--span-12">
+                                                        <mdc-form-field fluid >
+                                                        <mdc-text-field label="Description" required type="string" name="description" #input="ngModel" 
+                                                        [(ngModel)]="entryService.selectedEntry.description" ></mdc-text-field>                       
+                                                </mdc-form-field>  
+                                        </div>
+                                        </div>
+                                        <mdc-card-actions>
+                                                <mdc-card-action-icons>
+                                                <button mdcIconButton mdcCardAction="icon" icon="delete" (click)="resetForm(entryForm)" ></button>
+                                                <button mdcIconButton mdcCardAction="icon" icon="save" (click)="addEntry(entryForm)" ></button>
+                                                </mdc-card-action-icons>
+                                        </mdc-card-actions>
+                                        </mdc-card>
+        
+                                        </form>
+                        </div>
 
-                        </form>
+
+
+                <div class="mdc-layout-grid__cell--span-12">
+                        <div class="mdc-data-table" style="width: 100%" >
+                                <table class="mdc-data-table__table" aria-label="Dessert calories">
+                                <thead>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Value</th>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Input Account</th>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Output Account</th>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Description</th>
+                                        <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operations</th>
+                                </thead>
+                                <tbody class="mdc-data-table__content">
+                                        <tr *ngFor="let entry of entryService.entries" class="mdc-data-table__header-row" >
+                                        <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{ entry.value | currency:'EUR'}}</td>
+                                        <td class="mdc-data-table__cell mdc-data-table__cell">{{ entry.inputAccountLabel }}</td>
+                                        <td class="mdc-data-table__cell mdc-data-table__cell">{{ entry.outputAccountLabel }}</td>
+                                        <td class="mdc-data-table__cell">{{ entry.date }}</td>
+                                        <td class="mdc-data-table__cell">{{ entry.description }}</td>
+                                        <td class="mdc-data-table__cell">
+                                                <a (click)="editEntry(entry)" >
+                                                <mdc-icon>edit</mdc-icon>
+                                                </a>
+                                                <a (click)="deleteEntry(entry._id)" >
+                                                        <mdc-icon>delete</mdc-icon>
+                                                </a>
+                                        </td>
+                                        </tr>
+                                </tbody>
+                                </table>
+                        </div>
                 </div>
-          </div>
-          <div class="mdc-layout-grid__cell">
-                <div class="mdc-data-table" >
-                        <table class="mdc-data-table__table" aria-label="Dessert calories">
-                        <thead>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Title</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Input Account</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Input</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Output Account</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Output</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operations</th>
-                        </thead>
-                        <tbody class="mdc-data-table__content">
-                            <tr *ngFor="let entry of entryService.entries" class="mdc-data-table__header-row" >
-                                <td class="mdc-data-table__cell">{{ entry.title }}</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell">{{ entry.inputAccountLabel }}</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{ entry.input }}</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell">{{ entry.outputAccountLabel }}</td>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{ entry.output }}</td>
-                                <td class="mdc-data-table__cell">{{ entry.date }}</td>
-                                <td class="mdc-data-table__cell">
-                                    <a (click)="editEntry(entry)" >
-                                        <mdc-icon>edit</mdc-icon>
-                                    </a>
-                                    <a (click)="deleteEntry(entry._id)" >
-                                            <mdc-icon>delete</mdc-icon>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-          </div>
-        </div>
+</div>
 </div>
