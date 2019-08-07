@@ -25,6 +25,8 @@ import { RegistriesComponent } from './components/registries/registries.componen
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { NewAccountsComponent } from './components/new-accounts/new-accounts.component';
 import { NewInputComponent } from './components/new-input/new-input.component';
+import { OutputComponentComponent } from './components/output-component/output-component.component';
+import { NewRegistriesComponent } from './components/new-registries/new-registries.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NewInputComponent } from './components/new-input/new-input.component';
     RegistriesComponent,
     AccountsComponent,
     NewAccountsComponent,
-    NewInputComponent
+    NewInputComponent,
+    OutputComponentComponent,
+    NewRegistriesComponent
   ],
   imports: [
     BrowserModule,

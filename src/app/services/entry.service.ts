@@ -8,11 +8,13 @@ import { Entry } from '../models/entry';
 export class EntryService {
 
   selectedEntry: Entry;
+  selectedOutputEntry: Entry;
   entries: Entry[];
   readonly URL_API = 'http://localhost:3000/api/registries';
 
   constructor( private http: HttpClient ) {
     this.selectedEntry = new Entry();
+    this.selectedOutputEntry = new Entry();
   }
 
   getEntries() {

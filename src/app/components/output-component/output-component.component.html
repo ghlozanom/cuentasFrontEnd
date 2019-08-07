@@ -1,19 +1,18 @@
-
-<div mdcHeadline4 class="mdc-theme--on-surface">Inputs</div>
+<div mdcHeadline4 class="mdc-theme--on-surface">Outputs</div>
 
 <form #entryForm="ngForm" >
         <mdc-card class="contentCard">
                 <mdc-form-field fluid >
                         <mdc-text-field label="Fecha" required type="date" name="date" #input="ngModel" 
-                        [(ngModel)]="entryService.selectedEntry.date" ></mdc-text-field>                       
+                        [(ngModel)]="entryService.selectedOutputEntry.date" ></mdc-text-field>                       
                 </mdc-form-field> 
                 <mdc-form-field fluid >
                         <mdc-text-field label="Valor" type="number"  name="value" #input="ngModel" 
-                        [(ngModel)]="entryService.selectedEntry.input" ></mdc-text-field>                          
+                        [(ngModel)]="entryService.selectedOutputEntry.input" ></mdc-text-field>                          
                 </mdc-form-field>  
                 <mdc-form-field fluid >
-                        <mdc-select placeholder="Cuenta Ingreso" class="custom-select-outline-shape-radius" 
-                        [(ngModel)]="entryService.selectedEntry.inputAccount" name="inputAccount" >
+                        <mdc-select placeholder="Cuenta Salida" class="custom-select-outline-shape-radius" 
+                        [(ngModel)]="entryService.selectedOutputEntry.outputAccount" name="outputAccount" >
                                 <mdc-menu>
                                 <mdc-list>
                                         <mdc-list-item *ngFor="let account of accountService.accounts" [value]="account._id" >
@@ -25,8 +24,8 @@
                 </mdc-form-field>
                 <mdc-form-field fluid >
                         <mdc-text-field label="Description" required type="string" name="description" #input="ngModel" 
-                        [(ngModel)]="entryService.selectedEntry.description" ></mdc-text-field>                       
-                </mdc-form-field>  
+                        [(ngModel)]="entryService.selectedOutputEntry.description" ></mdc-text-field>                       
+                </mdc-form-field> 
                 <mdc-card-actions>
                         <mdc-card-action-icons>
                         <button mdcIconButton mdcCardAction="icon" icon="save" (click)="addEntry(entryForm)" ></button>
