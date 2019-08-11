@@ -27,6 +27,8 @@ import { NewAccountsComponent } from './components/new-accounts/new-accounts.com
 import { NewInputComponent } from './components/new-input/new-input.component';
 import { OutputComponentComponent } from './components/output-component/output-component.component';
 import { NewRegistriesComponent } from './components/new-registries/new-registries.component';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, reducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,14 @@ import { NewRegistriesComponent } from './components/new-registries/new-registri
     MdcIconButtonModule,
     MdcSelectModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot( reducers , {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
