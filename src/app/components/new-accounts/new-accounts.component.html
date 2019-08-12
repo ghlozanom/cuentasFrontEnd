@@ -1,5 +1,5 @@
 
-<div mdcHeadline4 class="mdc-theme--on-surface">Accounts: {{accountService.allAccountsBalance | currency:'EUR'}}</div>
+<div mdcHeadline4 class="mdc-theme--on-surface">Accounts: {{allAccountsBalance$ | async | currency:'EUR'}}</div>
 
 <mdc-card class="contentCard">
 

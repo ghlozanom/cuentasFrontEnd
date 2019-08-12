@@ -18,9 +18,9 @@ export class AccountsComponent implements OnInit {
 
   constructor(private accountService: AccountService,
               private snackbar: MdcSnackbar,
-              private store: Store<State>) {
+              store: Store<State>) {
 
-                this.allAccountsBalance$ = store.pipe(select('balance'));
+              this.allAccountsBalance$ = store.pipe(select('balance'));
   }
 
   ngOnInit() {

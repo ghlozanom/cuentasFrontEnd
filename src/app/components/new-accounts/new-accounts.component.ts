@@ -5,6 +5,9 @@ import { MdcSnackbar } from '@angular-mdc/web';
 import { Account } from 'src/app/models/account';
 import { EntryService } from 'src/app/services/entry.service';
 import { Entry } from 'src/app/models/entry';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/reducers';
 
 @Component({
   selector: 'app-new-accounts',
@@ -13,9 +16,15 @@ import { Entry } from 'src/app/models/entry';
 })
 export class NewAccountsComponent implements OnInit {
 
+  allAccountsBalance$: Observable<number>;
+
   constructor(private accountService : AccountService,
               private snackbar : MdcSnackbar,
-              private entryService: EntryService) { }
+              private entryService: EntryService,
+              store: Store<State>) { 
+
+                this.allAccountsBalance$ = store.pipe(select('balance'));
+              }
 
   ngOnInit() {
   }
@@ -80,7 +89,6 @@ export class NewAccountsComponent implements OnInit {
               return entry;
           });
           this.entryService.entries = entries;
-          this.accountService.allAccountsBalance = this.accountService.getAllAccountsBalance();
           console.log(res);
         });
 
