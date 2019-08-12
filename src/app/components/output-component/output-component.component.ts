@@ -29,6 +29,7 @@ export class OutputComponentComponent implements OnInit {
     .subscribe(res => {
       this.snackbar.open(`Entry saved successfuly`);
       this.store.dispatch(addOutputEntry( {entry: form.value}));
+      this.accountService.updateAccounts();
       this.resetForm(form);
     });
   } 

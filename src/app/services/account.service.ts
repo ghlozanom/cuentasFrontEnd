@@ -85,7 +85,6 @@ export class AccountService {
               return entry;
           });
           this.entryService.entries = entries;
-          this.allAccountsBalance = this.getAllAccountsBalance();
           console.log(res);
         });
 

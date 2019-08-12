@@ -29,6 +29,7 @@ export class NewInputComponent implements OnInit {
     .subscribe(res => {
       this.snackbar.open(`Entry saved successfuly`);
       this.store.dispatch(addInputEntry( {entry: form.value}));
+      this.accountService.updateAccounts();
       this.resetForm(form);
     });
   }
