@@ -5,6 +5,9 @@ import { MdcSnackbar } from '@angular-mdc/web';
 import { NgForm } from '@angular/forms';
 import { Entry } from 'src/app/models/entry';
 import { Account } from '../../models/account';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/reducers';
+import { addOutputEntry } from 'src/app/actions/registries.actions';
 
 @Component({
   selector: 'app-output-component',
@@ -15,7 +18,8 @@ export class OutputComponentComponent implements OnInit {
 
   constructor(private entryService: EntryService,
               private accountService: AccountService,
-              private snackbar: MdcSnackbar) { }
+              private snackbar: MdcSnackbar,
+              private store : Store<State>) { }
 
   ngOnInit() {
   }
@@ -23,9 +27,9 @@ export class OutputComponentComponent implements OnInit {
   addEntry(form: NgForm) {
     this.entryService.postEntry(form.value)
     .subscribe(res => {
-      this.resetForm(form);
       this.snackbar.open(`Entry saved successfuly`);
-      this.accountService.updateAccounts();
+      this.store.dispatch(addOutputEntry( {entry: form.value}));
+      this.resetForm(form);
     });
   } 
 

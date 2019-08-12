@@ -3,7 +3,7 @@ import {
     on,
     Action
   } from '@ngrx/store';
-import { loadAccounts } from 'src/app/actions/registries.actions';
+import { loadAccounts, addInputEntry, addOutputEntry } from 'src/app/actions/registries.actions';
 import { Entry } from 'src/app/models/entry';
 
 export const initialState = [];
@@ -32,8 +32,10 @@ const balanceReducerCreator = createReducer(
         });
         
         return newBalance;
-    }
-    ));
+    }),
+    on(addInputEntry, (state, entry) => state + entry.entry.value),
+    on(addOutputEntry, (state, entry) => state - entry.entry.value)
+);
   
 export function balanceReducer(state: number , action: Action) {
     return balanceReducerCreator(state, action);
