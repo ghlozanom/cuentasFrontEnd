@@ -3,6 +3,9 @@ import { AccountService } from 'src/app/services/account.service';
 import { MdcSnackbar } from '@angular-mdc/web';
 import { Account } from 'src/app/models/account';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { State } from 'src/app/reducers';
 
 @Component({
   selector: 'app-accounts',
@@ -11,8 +14,14 @@ import { NgForm } from '@angular/forms';
 })
 export class AccountsComponent implements OnInit {
 
+  allAccountsBalance$: Observable<number>;
+
   constructor(private accountService: AccountService,
-              private snackbar: MdcSnackbar) { }
+              private snackbar: MdcSnackbar,
+              private store: Store<State>) {
+
+                this.allAccountsBalance$ = store.pipe(select('balance'));
+  }
 
   ngOnInit() {
     this.getAccounts();

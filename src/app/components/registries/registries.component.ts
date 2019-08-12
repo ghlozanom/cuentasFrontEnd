@@ -5,6 +5,9 @@ import { Entry } from 'src/app/models/entry';
 import { MdcSnackbar } from '@angular-mdc/web';
 import { AccountService } from 'src/app/services/account.service';
 import { Account } from '../../models/account';
+import { State } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { loadAccounts } from 'src/app/actions/registries.actions';
 
 
 @Component({
@@ -17,7 +20,8 @@ export class RegistriesComponent implements OnInit {
 
   constructor(private entryService: EntryService,
               private accountService: AccountService,
-              private snackbar: MdcSnackbar) { }
+              private snackbar: MdcSnackbar,
+              private store: Store<State>) { }
 
   ngOnInit() {
     this.getEntries();
@@ -74,6 +78,7 @@ export class RegistriesComponent implements OnInit {
         this.entryService.getEntries()
         .subscribe( res => {
           let rawEntries = res as Entry[];
+
           let entries = rawEntries.map( entry => {
               let inputAccount = this.accountService.accounts.find( account => {
                 return account._id == entry.inputAccount;
@@ -100,7 +105,7 @@ export class RegistriesComponent implements OnInit {
               return entry;
           });
           this.entryService.entries = entries;
-          this.accountService.allAccountsBalance = this.accountService.getAllAccountsBalance();
+          this.store.dispatch(loadAccounts({entries: entries}));
           console.log(res);
         });
 

@@ -1,4 +1,4 @@
-<div mdcHeadline4 class="mdc-theme--on-surface">Accounts : {{accountService.getAllAccountsBalance() | currency:'EUR'}}</div>
+<div mdcHeadline4 class="mdc-theme--on-surface">Accounts : {{allAccountsBalance$ | async | currency:'EUR'}}</div>
 
 <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell--span-12">

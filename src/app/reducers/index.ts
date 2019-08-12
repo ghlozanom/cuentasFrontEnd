@@ -9,18 +9,30 @@ import {
   Action
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { registriesReducer } from './registries/registries.reducers';
+import { registriesReducer, balanceReducer } from './registries/registries.reducers';
+import { Entry } from '../models/entry';
+import { debug } from './metareducers/log.metareducer';
 
 
 export interface State {
-  accountBalance : number
+  entries : Entry[];
+  balance : number
 }
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [debug] : [];
 
 
 
 export const reducers : ActionReducerMap<State> = {
-  accountBalance : registriesReducer
+  entries : registriesReducer, 
+  balance : balanceReducer
 }
+
+export const selectEntries = (state:State) => state.entries;
+
+export const selectInputEntries = createSelector(
+  selectEntries,
+  (entries: Entry[]) => {
+    return entries.filter( (entry: Entry) => typeof entry.outputAccount === "undefined"  )
+  } );
