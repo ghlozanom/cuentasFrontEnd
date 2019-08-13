@@ -23,6 +23,7 @@
     "@material/animation": "^3.1.0",
     "@material/checkbox": "^3.1.0",
     "@material/data-table": "^3.1.0",
+    "@ngrx/effects": "^8.2.0",
     "@ngrx/store": "^8.2.0",
     "@ngrx/store-devtools": "^8.2.0",
     "rxjs": "~6.4.0",

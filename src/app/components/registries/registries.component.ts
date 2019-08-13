@@ -8,6 +8,7 @@ import { Account } from '../../models/account';
 import { State } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { loadAccounts } from 'src/app/actions/registries.actions';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { loadAccounts } from 'src/app/actions/registries.actions';
 })
 export class RegistriesComponent implements OnInit {
 
+  registries$ : Observable<Entry[]> = this.store.select(state => state.entries);
+
 
   constructor(private entryService: EntryService,
               private accountService: AccountService,
@@ -24,7 +27,7 @@ export class RegistriesComponent implements OnInit {
               private store: Store<State>) { }
 
   ngOnInit() {
-    this.getEntries();
+    this.store.dispatch({type: '[Registries Component] Load Registries'});
   }
 
   resetForm(form?: NgForm) {
