@@ -29,6 +29,8 @@ import { OutputComponentComponent } from './components/output-component/output-c
 import { NewRegistriesComponent } from './components/new-registries/new-registries.component';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { metaReducers, reducers } from './reducers';
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
