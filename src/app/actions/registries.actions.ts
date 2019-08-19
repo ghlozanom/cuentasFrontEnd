@@ -1,7 +1,7 @@
 import {createAction, props} from '@ngrx/store';
 import { Entry } from '../models/entry';
 
-export const loadAccounts = createAction('[Registries Component] Registries loaded', 
+export const loadRegistries = createAction('[Registries Component] Registries loaded', 
     props<{entries: Entry[]}>());
 
 export const addInputEntry = createAction('[Input Component] Input added', 

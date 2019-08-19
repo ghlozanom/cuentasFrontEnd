@@ -14,17 +14,18 @@ import { State } from 'src/app/reducers';
 })
 export class AccountsComponent implements OnInit {
 
+  accounts$ : Observable<Account[]> = this.store.select(state => state.accounts);
   allAccountsBalance$: Observable<number>;
 
   constructor(private accountService: AccountService,
               private snackbar: MdcSnackbar,
-              store: Store<State>) {
+              private store: Store<State>) {
 
               this.allAccountsBalance$ = store.pipe(select('balance'));
   }
 
   ngOnInit() {
-    this.getAccounts();
+    this.store.dispatch({type: '[Accounts Component] Load accounts'});
   }
 
   resetForm(form?: NgForm) {

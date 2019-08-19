@@ -24,7 +24,7 @@
             </form>
 
     <mdc-list>
-    <mdc-list-item *ngFor="let account of accountService.accounts">
+    <mdc-list-item *ngFor="let account of accounts$ | async">
           <div style="width: 100%"><div style="float: left">{{account.title}}</div> <div style="float: right">{{ account.balance  | currency:'EUR' }}</div></div></mdc-list-item>
     </mdc-list>
 </mdc-card>

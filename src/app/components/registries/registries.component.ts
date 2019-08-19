@@ -5,10 +5,10 @@ import { Entry } from 'src/app/models/entry';
 import { MdcSnackbar } from '@angular-mdc/web';
 import { AccountService } from 'src/app/services/account.service';
 import { Account } from '../../models/account';
-import { State } from 'src/app/reducers';
+import { State, uiEntries } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
-import { loadAccounts } from 'src/app/actions/registries.actions';
 import { Observable } from 'rxjs';
+import { loadRegistries } from 'src/app/actions/registries.actions';
 
 
 @Component({
@@ -18,7 +18,25 @@ import { Observable } from 'rxjs';
 })
 export class RegistriesComponent implements OnInit {
 
-  registries$ : Observable<Entry[]> = this.store.select(state => state.entries);
+  registries$ : Observable<Entry[]> = this.store.select(state => {
+
+    let newEntries : Entry[] = [];
+    state.entries.forEach(entry => {
+      let newEntry = {...entry};
+      let inputAccount = state.accounts.find(account => account._id == entry.inputAccount);
+      if(inputAccount) {
+        newEntry.inputAccountLabel = inputAccount.title;
+      }        
+      let outputAccount = state.accounts.find(account => account._id == entry.outputAccount);
+      if(outputAccount) {
+        newEntry.outputAccountLabel = outputAccount.title;
+      }
+      newEntries.push(newEntry); 
+    });
+    return newEntries
+  });
+
+
 
 
   constructor(private entryService: EntryService,
@@ -108,7 +126,7 @@ export class RegistriesComponent implements OnInit {
               return entry;
           });
           this.entryService.entries = entries;
-          this.store.dispatch(loadAccounts({entries: entries}));
+          this.store.dispatch(loadRegistries({entries: entries}));
           console.log(res);
         });
 

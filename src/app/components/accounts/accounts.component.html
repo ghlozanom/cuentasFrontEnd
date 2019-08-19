@@ -10,7 +10,7 @@
                             <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Operaciones</th>
                         </thead>
                         <tbody class="mdc-data-table__content">
-                            <tr *ngFor="let account of accountService.accounts" class="mdc-data-table__header-row" >
+                            <tr *ngFor="let account of accounts$ | async" class="mdc-data-table__header-row" >
                                 <td class="mdc-data-table__cell">{{ account.title }}</td>
                                 <td class="mdc-data-table__cell--numeric">{{ account.balance  | currency:'EUR' }}</td>
                                 <td class="mdc-data-table__cell">

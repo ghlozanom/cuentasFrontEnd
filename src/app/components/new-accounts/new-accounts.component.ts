@@ -17,11 +17,12 @@ import { State } from 'src/app/reducers';
 export class NewAccountsComponent implements OnInit {
 
   allAccountsBalance$: Observable<number>;
+  accounts$ : Observable<Account[]> = this.store.select(state => state.accounts);
 
   constructor(private accountService : AccountService,
               private snackbar : MdcSnackbar,
               private entryService: EntryService,
-              store: Store<State>) { 
+              private store: Store<State>) { 
 
                 this.allAccountsBalance$ = store.pipe(select('balance'));
               }
